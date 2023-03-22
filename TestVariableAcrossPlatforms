@@ -1,0 +1,27 @@
+[Test]
+public void TestVariableAcrossPlatforms()
+{
+    int expectedValue = 10;
+
+    // Set the variable value based on the current platform
+    switch (Application.platform)
+    {
+        case RuntimePlatform.WindowsEditor:
+        case RuntimePlatform.WindowsPlayer:
+            myVariable = 10;
+            break;
+        case RuntimePlatform.OSXEditor:
+        case RuntimePlatform.OSXPlayer:
+            myVariable = 10;
+            break;
+        case RuntimePlatform.LinuxPlayer:
+            myVariable = 10;
+            break;
+        default:
+            Assert.Fail("Unsupported platform");
+            break;
+    }
+
+    // Check if the variable value is the same across different platforms
+    Assert.AreEqual(expectedValue, myVariable);
+}
